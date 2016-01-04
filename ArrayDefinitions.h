@@ -9,78 +9,78 @@
 #define ARRAY_DEFINITIONS_H
 
 
-template <typename T, size_t max_size_>
-Array<T,max_size_>::Array()
+template <typename T, size_t MAX_SIZE>
+Array<T, MAX_SIZE>::Array()
 {
   clear();
 }
 
-template <typename T, size_t max_size_>
-Array<T,max_size_>::Array(const T &value)
+template <typename T, size_t MAX_SIZE>
+Array<T, MAX_SIZE>::Array(const T &value)
 {
   fill(value);
 }
 
-template <typename T, size_t max_size_>
-Array<T, max_size_>::Array(const T (&values)[max_size_])
+template <typename T, size_t MAX_SIZE>
+Array<T, MAX_SIZE>::Array(const T (&values)[MAX_SIZE])
 {
   fill(values);
 }
 
-template <typename T, size_t max_size_>
-T& Array<T, max_size_>::operator[](const size_t i)
+template <typename T, size_t MAX_SIZE>
+T& Array<T, MAX_SIZE>::operator[](const size_t i)
 {
   return values_[i];
 }
 
-template <typename T, size_t max_size_>
-T& Array<T, max_size_>::at(const size_t i)
+template <typename T, size_t MAX_SIZE>
+T& Array<T, MAX_SIZE>::at(const size_t i)
 {
   return values_[i];
 }
 
-template <typename T, size_t max_size_>
-T& Array<T, max_size_>::front()
+template <typename T, size_t MAX_SIZE>
+T& Array<T, MAX_SIZE>::front()
 {
   return values_[0];
 }
 
-template <typename T, size_t max_size_>
-T& Array<T, max_size_>::back()
+template <typename T, size_t MAX_SIZE>
+T& Array<T, MAX_SIZE>::back()
 {
   return values_[size_-1];
 }
 
-template <typename T, size_t max_size_>
-void Array<T, max_size_>::clear()
+template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::clear()
 {
   size_ = 0;
 }
 
-template <typename T, size_t max_size_>
-void Array<T, max_size_>::fill(const T &value)
+template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::fill(const T &value)
 {
-  assign(max_size_,value);
+  assign(MAX_SIZE,value);
 }
 
-template <typename T, size_t max_size_>
-void Array<T, max_size_>::fill(const T (&values)[max_size_])
+template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::fill(const T (&values)[MAX_SIZE])
 {
-  assign(max_size_,values);
+  assign(MAX_SIZE,values);
 }
 
-template <typename T, size_t max_size_>
-void Array<T, max_size_>::assign(const size_t n, const T &value)
+template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::assign(const size_t n, const T &value)
 {
   size_t assign_size = n;
-  if ((n > size_) && (n <= max_size_))
+  if ((n > size_) && (n <= MAX_SIZE))
   {
     size_ = n;
   }
-  else if (n > max_size_)
+  else if (n > MAX_SIZE)
   {
-    size_ = max_size_;
-    assign_size = max_size_;
+    size_ = MAX_SIZE;
+    assign_size = MAX_SIZE;
   }
   for (size_t i=0; i<assign_size; i++)
   {
@@ -88,33 +88,33 @@ void Array<T, max_size_>::assign(const size_t n, const T &value)
   }
 }
 
-template <typename T, size_t max_size_>
-void Array<T, max_size_>::assign(const size_t n, const T values[])
+template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::assign(const size_t n, const T values[])
 {
   size_t assign_size = n;
-  if ((n > size_) && (n <= max_size_))
+  if ((n > size_) && (n <= MAX_SIZE))
   {
     size_ = n;
   }
-  else if (n > max_size_)
+  else if (n > MAX_SIZE)
   {
-    size_ = max_size_;
-    assign_size = max_size_;
+    size_ = MAX_SIZE;
+    assign_size = MAX_SIZE;
   }
   memcpy((void*) values_, (void*) values, assign_size*sizeof(T));
 }
 
-template <typename T, size_t max_size_>
-void Array<T, max_size_>::push_back(const T &value)
+template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::push_back(const T &value)
 {
-  if (size_ < max_size_)
+  if (size_ < MAX_SIZE)
   {
     values_[size_++] = value;
   }
 }
 
-template <typename T, size_t max_size_>
-void Array<T, max_size_>::pop_back()
+template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::pop_back()
 {
   if (size_ > 0)
   {
@@ -122,28 +122,28 @@ void Array<T, max_size_>::pop_back()
   }
 }
 
-template <typename T, size_t max_size_>
-size_t Array<T, max_size_>::size()
+template <typename T, size_t MAX_SIZE>
+size_t Array<T, MAX_SIZE>::size()
 {
   return size_;
 }
 
-template <typename T, size_t max_size_>
-size_t Array<T, max_size_>::max_size()
+template <typename T, size_t MAX_SIZE>
+size_t Array<T, MAX_SIZE>::max_size()
 {
-  return max_size_;
+  return MAX_SIZE;
 }
 
-template <typename T, size_t max_size_>
-bool Array<T, max_size_>::empty()
+template <typename T, size_t MAX_SIZE>
+bool Array<T, MAX_SIZE>::empty()
 {
   return size_ == 0;
 }
 
-template <typename T, size_t max_size_>
-bool Array<T, max_size_>::full()
+template <typename T, size_t MAX_SIZE>
+bool Array<T, MAX_SIZE>::full()
 {
-  return size_ == max_size_;
+  return size_ == MAX_SIZE;
 }
 
 #endif

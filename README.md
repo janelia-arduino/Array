@@ -17,5 +17,32 @@ and the size adjusts accordingly. The data are stored internally as a
 statically allocated c style array. Care must be taken not to
 dereference an empty array or access elements beyond bounds.
 
+This library is very similar to
+[Vector](https://github.com/janelia-arduino/Array), however Vector
+stores data externally, outside the container, and this library stores
+data internally. The pointer to the external memory causes the Vector
+container to use more memory than this container, but storing the data
+internally makes it necessary to use the maximum size as a class
+template parameter.
+
+## Array vs Vector
+
+###Array
+
+```c++
+const int ELEMENT_COUNT = 5;
+Array<int,ELEMENT_COUNT> array;
+array.push_back(77);
+```
+
+###Vector
+
+```c++
+const int ELEMENT_COUNT = 5;
+int storage_array[ELEMENT_COUNT_MAX];
+Vector<int> vector(storage_array);
+vector.push_back(77);
+```
+
 [Usage Examples](./examples)
 
