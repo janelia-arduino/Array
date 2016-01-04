@@ -12,39 +12,33 @@
 #else
 #include "WProgram.h"
 #endif
-// #define __ASSERT_USE_STDERR
-// #include <assert.h>
 
-
-// // handle diagnostic informations given by assertion and abort program execution:
-// void __assert(const char *__func, const char *__file, int __lineno, const char *__sexp);
-
-template <typename T, unsigned int max_size_>
+template <typename T, size_t max_size_>
 class Array
 {
 public:
   Array();
   Array(const T &value);
   Array(const T (&values)[max_size_]);
-  T& operator[](const unsigned int i);
-  T& at(const unsigned int i);
+  T& operator[](const size_t i);
+  T& at(const size_t i);
   T& front();
   T& back();
   void clear();
   void fill(const T &value);
   void fill(const T (&values)[max_size_]);
-  void assign(const unsigned int n, const T &value);
-  void assign(const unsigned int n, const T values[]);
+  void assign(const size_t n, const T &value);
+  void assign(const size_t n, const T values[]);
   void push_back(const T &value);
   void pop_back();
-  unsigned int size();
-  unsigned int max_size();
+  size_t size();
+  size_t max_size();
   bool empty();
   bool full();
 
 private:
   T values_[max_size_];
-  unsigned int size_;
+  size_t size_;
 };
 #include "ArrayDefinitions.h"
 
