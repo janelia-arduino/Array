@@ -7,10 +7,15 @@
 // ----------------------------------------------------------------------------
 #ifndef ARRAY_H
 #define ARRAY_H
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
+
+#ifdef ARDUINO
+    #if ARDUINO >= 100
+        #include <Arduino.h>
+    #else
+        #include <WProgram.h>
+    #endif
 #else
-#include "WProgram.h"
+    #include <cstddef>
 #endif
 
 template <typename T, size_t MAX_SIZE>
