@@ -21,12 +21,14 @@ Array<T, MAX_SIZE>::Array()
 template <typename T, size_t MAX_SIZE>
 Array<T, MAX_SIZE>::Array(const T &value)
 {
+  clear();
   fill(value);
 }
 
 template <typename T, size_t MAX_SIZE>
 Array<T, MAX_SIZE>::Array(const T (&values)[MAX_SIZE])
 {
+  clear();
   fill(values);
 }
 
