@@ -15,20 +15,20 @@
 template <typename T, size_t MAX_SIZE>
 Array<T, MAX_SIZE>::Array()
 {
-  clear();
+  size_ = 0;
 }
 
 template <typename T, size_t MAX_SIZE>
 Array<T, MAX_SIZE>::Array(const T &value)
 {
-  clear();
+  size_ = 0;
   fill(value);
 }
 
 template <typename T, size_t MAX_SIZE>
 Array<T, MAX_SIZE>::Array(const T (&values)[MAX_SIZE])
 {
-  clear();
+  size_ = 0;
   fill(values);
 }
 
