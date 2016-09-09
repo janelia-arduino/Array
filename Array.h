@@ -45,6 +45,23 @@ private:
   T values_[MAX_SIZE];
   size_t size_;
 };
+
+template <typename T, size_t MAX_SIZE>
+inline Print &operator <<(Print &stream, const Array<T,MAX_SIZE> &array)
+{
+  stream.print("[");
+  for (int i=0; i<array.size(); i++)
+  {
+    if (i != 0)
+    {
+      stream.print(",");
+    }
+    stream.print(array[i]);
+  }
+  stream.print("]");
+  return stream;
+}
+
 #include "ArrayDefinitions.h"
 
 #endif

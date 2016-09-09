@@ -8,26 +8,12 @@ const unsigned int MAX_SIZE = 10;
 
 Array<int, MAX_SIZE> array;
 
-void printArray(Array<int,MAX_SIZE> array)
-{
-  Serial << "array = [";
-  for (int i=0; i<array.size(); i++)
-  {
-    if (i != 0)
-    {
-      Serial << ",";
-    }
-    Serial << array[i];
-  }
-  Serial << "]" << endl;
-}
-
 void setup()
 {
   Serial.begin(BAUDRATE);
   delay(1000);
 
-  printArray(array);
+  Serial << array << endl;
   Serial << "array.max_size() = " << array.max_size() << endl;
   Serial << "array.size() = " << array.size() << endl;
   Serial << "array.empty() = " << array.empty() << endl;
@@ -38,7 +24,7 @@ void setup()
   int array_simple[simple_size] = {8,9,10};
   array.assign(simple_size,array_simple);
 
-  printArray(array);
+  Serial << array << endl;
   Serial << "array.max_size() = " << array.max_size() << endl;
   Serial << "array.size() = " << array.size() << endl;
   Serial << "array.empty() = " << array.empty() << endl;
@@ -47,7 +33,7 @@ void setup()
 
   array.push_back(39);
   array.push_back(73);
-  printArray(array);
+  Serial << array << endl;
   Serial << "array.size() = " << array.size() << endl;
   Serial << "array.front() = " << array.front() << endl;
   Serial << "array.back() = " << array.back() << endl;
@@ -56,7 +42,7 @@ void setup()
   array.pop_back();
   array.pop_back();
   array.pop_back();
-  printArray(array);
+  Serial << array << endl;
   Serial << "array.size() = " << array.size() << endl;
   Serial << "array.front() = " << array.front() << endl;
   Serial << "array.back() = " << array.back() << endl;

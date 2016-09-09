@@ -7,24 +7,10 @@ const int BAUDRATE = 9600;
 
 const int ELEMENT_COUNT = 5;
 
-void printArray(Array<int,ELEMENT_COUNT> array)
-{
-  Serial << "[";
-  for (int i=0; i<ELEMENT_COUNT; i++)
-  {
-    if (i != 0)
-    {
-      Serial << ",";
-    }
-    Serial << array[i];
-  }
-  Serial << "]" << endl;
-}
-
 void printArray(const int (&array)[ELEMENT_COUNT])
 {
   Array<int,ELEMENT_COUNT> array_copy(array);
-  printArray(array_copy);
+  Serial << array_copy << endl;
 }
 
 Array<int,ELEMENT_COUNT> generateArray()
@@ -61,7 +47,7 @@ void setup()
   array.push_back(0);
   array.pop_back();
   Serial << "array:" << endl;
-  printArray(array);
+  Serial << array << endl;
 
   const int array_simple[ELEMENT_COUNT] = {15,14,13,12,11};
   Serial << "array_simple:" << endl;
@@ -69,31 +55,31 @@ void setup()
 
   Array<int,ELEMENT_COUNT> array_copy(array_simple);
   Serial << "array_copy:" << endl;
-  printArray(array_copy);
+  Serial << array_copy << endl;
 
   Array<int,ELEMENT_COUNT> array_initialized(ELEMENT_COUNT);
   Serial << "array_initialized:" << endl;
-  printArray(array_initialized);
+  Serial << array_initialized << endl;
 
   array_initialized.fill(37);
   Serial << "array_initialized.fill(37):" << endl;
-  printArray(array_initialized);
+  Serial << array_initialized << endl;
 
   array_initialized.fill(array_simple);
   Serial << "array_initialized.fill(array_simple):" << endl;
-  printArray(array_initialized);
+  Serial << array_initialized << endl;
 
   array_initialized[3] = 666;
   Serial << "array_initialized[3] = 666:" << endl;
-  printArray(array_initialized);
+  Serial << array_initialized << endl;
 
   Array<int,ELEMENT_COUNT> array_generated = generateArray();
   Serial << "array_generated:" << endl;
-  printArray(array_generated);
+  Serial << array_generated << endl;
 
   Array<int,ELEMENT_COUNT> array_doubled = doubleElements(array_generated);
   Serial << "array_doubled:" << endl;
-  printArray(array_doubled);
+  Serial << array_doubled << endl;
 
   int out_of_bounds = array_doubled[ELEMENT_COUNT+1];
   Serial << "out_of_bounds: " << out_of_bounds << endl;
