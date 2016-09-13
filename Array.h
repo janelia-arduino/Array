@@ -33,7 +33,8 @@ public:
   T& front();
   T& back();
   void clear();
-  void fill(const T &value);
+  template <typename U>
+  void fill(const U &value);
   template <typename U, size_t N>
   void fill(const U (&values)[N]);
   template <typename U, size_t N>

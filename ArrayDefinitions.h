@@ -72,7 +72,8 @@ void Array<T, MAX_SIZE>::clear()
 }
 
 template <typename T, size_t MAX_SIZE>
-void Array<T, MAX_SIZE>::fill(const T &value)
+template <typename U>
+void Array<T, MAX_SIZE>::fill(const U &value)
 {
   assign(MAX_SIZE,value);
 }

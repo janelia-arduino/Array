@@ -87,6 +87,13 @@ void setup()
   out_of_bounds = array_doubled.at(ELEMENT_COUNT+1);
   Serial << "out_of_bounds:" << out_of_bounds << endl;
 
+  // fill with value of a different type
+  Array<int,ELEMENT_COUNT> array_filled;
+  long fill_value = 123;
+  array_filled.fill(fill_value);
+  Serial << "array_filled:" << endl;
+  Serial << array_filled << endl;
+
   // initialize with array of different size and type
   Array<long,ELEMENT_COUNT*2> array_copy2(array_simple);
   Serial << "array_copy2:" << endl;
