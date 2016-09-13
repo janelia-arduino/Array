@@ -26,7 +26,16 @@ Array<T, MAX_SIZE>::Array(const T &value)
 }
 
 template <typename T, size_t MAX_SIZE>
-Array<T, MAX_SIZE>::Array(const T (&values)[MAX_SIZE])
+template <typename U, size_t N>
+Array<T, MAX_SIZE>::Array(const U (&values)[N])
+{
+  size_ = 0;
+  fill(values);
+}
+
+template <typename T, size_t MAX_SIZE>
+template <typename U, size_t N>
+Array<T, MAX_SIZE>::Array(const Array<U,N> &values)
 {
   size_ = 0;
   fill(values);
@@ -69,24 +78,25 @@ void Array<T, MAX_SIZE>::fill(const T &value)
 }
 
 template <typename T, size_t MAX_SIZE>
-void Array<T, MAX_SIZE>::fill(const T (&values)[MAX_SIZE])
+template <typename U, size_t N>
+void Array<T, MAX_SIZE>::fill(const U (&values)[N])
 {
-  assign(MAX_SIZE,values);
+  assign(N,values);
 }
 
 template <typename T, size_t MAX_SIZE>
-void Array<T, MAX_SIZE>::assign(const size_t n, const T &value)
+template <typename U, size_t N>
+void Array<T, MAX_SIZE>::fill(const Array<U,N> &values)
 {
-  size_t assign_size = n;
-  if ((n > size_) && (n <= MAX_SIZE))
-  {
-    size_ = n;
-  }
-  else if (n > MAX_SIZE)
-  {
-    size_ = MAX_SIZE;
-    assign_size = MAX_SIZE;
-  }
+  assign(N,values);
+}
+
+template <typename T, size_t MAX_SIZE>
+template <typename U>
+void Array<T, MAX_SIZE>::assign(const size_t n, const U &value)
+{
+  size_t assign_size = ((n < MAX_SIZE) ? n : MAX_SIZE);
+  size_ = assign_size;
   for (size_t i=0; i<assign_size; i++)
   {
     values_[i] = value;
@@ -94,19 +104,29 @@ void Array<T, MAX_SIZE>::assign(const size_t n, const T &value)
 }
 
 template <typename T, size_t MAX_SIZE>
-void Array<T, MAX_SIZE>::assign(const size_t n, const T values[])
+template <typename U, size_t N>
+void Array<T, MAX_SIZE>::assign(const size_t n, const U (&values)[N])
 {
-  size_t assign_size = n;
-  if ((n > size_) && (n <= MAX_SIZE))
+  size_t n_smallest = ((n < N) ? n : N);
+  size_t assign_size = ((n_smallest < MAX_SIZE) ? n_smallest : MAX_SIZE);
+  size_ = assign_size;
+  for (size_t i=0; i<assign_size; i++)
   {
-    size_ = n;
+    values_[i] = values[i];
   }
-  else if (n > MAX_SIZE)
+}
+
+template <typename T, size_t MAX_SIZE>
+template <typename U, size_t N>
+void Array<T, MAX_SIZE>::assign(const size_t n, const Array<U,N> &values)
+{
+  size_t n_smallest = ((n < values.size()) ? n : values.size());
+  size_t assign_size = ((n_smallest < MAX_SIZE) ? n_smallest : MAX_SIZE);
+  size_ = assign_size;
+  for (size_t i=0; i<assign_size; i++)
   {
-    size_ = MAX_SIZE;
-    assign_size = MAX_SIZE;
+    values_[i] = values[i];
   }
-  memcpy((void*) values_, (void*) values, assign_size*sizeof(T));
 }
 
 template <typename T, size_t MAX_SIZE>

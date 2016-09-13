@@ -86,6 +86,21 @@ void setup()
 
   out_of_bounds = array_doubled.at(ELEMENT_COUNT+1);
   Serial << "out_of_bounds:" << out_of_bounds << endl;
+
+  // initialize with array of different size and type
+  Array<long,ELEMENT_COUNT*2> array_copy2(array_simple);
+  Serial << "array_copy2:" << endl;
+  Serial << array_copy2 << endl;
+  Serial << "array_copy2.max_size():" << endl;
+  Serial << array_copy2.max_size() << endl;
+
+  // initialize with another array instance
+  Array<size_t,ELEMENT_COUNT*3> array_copy3(array_copy2);
+  Serial << "array_copy3:" << endl;
+  Serial << array_copy3 << endl;
+  Serial << "array_copy3.max_size():" << endl;
+  Serial << array_copy3.max_size() << endl;
+
 }
 
 

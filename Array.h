@@ -24,16 +24,26 @@ class Array
 public:
   Array();
   Array(const T &value);
-  Array(const T (&values)[MAX_SIZE]);
+  template <typename U, size_t N>
+  Array(const U (&values)[N]);
+  template <typename U, size_t N>
+  Array(const Array<U,N> &values);
   T& operator[](const size_t i);
   T& at(const size_t i);
   T& front();
   T& back();
   void clear();
   void fill(const T &value);
-  void fill(const T (&values)[MAX_SIZE]);
-  void assign(const size_t n, const T &value);
-  void assign(const size_t n, const T values[]);
+  template <typename U, size_t N>
+  void fill(const U (&values)[N]);
+  template <typename U, size_t N>
+  void fill(const Array<U,N> &values);
+  template <typename U>
+  void assign(const size_t n, const U &value);
+  template <typename U, size_t N>
+  void assign(const size_t n, const U (&values)[N]);
+  template <typename U, size_t N>
+  void assign(const size_t n, const Array<U,N> &values);
   void push_back(const T &value);
   void pop_back();
   size_t size();
