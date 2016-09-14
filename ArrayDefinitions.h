@@ -89,7 +89,7 @@ template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
 void Array<T, MAX_SIZE>::fill(const Array<U,N> &values)
 {
-  assign(N,values);
+  assign(values.size(),values);
 }
 
 template <typename T, size_t MAX_SIZE>
@@ -170,6 +170,12 @@ template <typename T, size_t MAX_SIZE>
 bool Array<T, MAX_SIZE>::full()
 {
   return size_ == MAX_SIZE;
+}
+
+template <typename T, size_t MAX_SIZE>
+T* Array<T, MAX_SIZE>::data()
+{
+  return values_;
 }
 
 #endif

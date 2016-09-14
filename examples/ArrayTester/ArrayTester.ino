@@ -108,6 +108,14 @@ void setup()
   Serial << "array_copy3.max_size():" << endl;
   Serial << array_copy3.max_size() << endl;
 
+  // get pointer to raw data
+  size_t *array_copy3_ptr = array_copy3.data();
+  size_t index = 2;
+  if (index < array_copy3.size())
+  {
+    Serial << "array_copy3_ptr[index]:" << endl;
+    Serial << array_copy3_ptr[index] << endl;
+  }
 }
 
 

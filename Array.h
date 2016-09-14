@@ -51,6 +51,7 @@ public:
   size_t max_size();
   bool empty();
   bool full();
+  T* data();
 
 private:
   T values_[MAX_SIZE];
