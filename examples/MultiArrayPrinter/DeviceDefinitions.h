@@ -31,7 +31,7 @@ template <typename T,
           unsigned int Y_SIZE,
           unsigned int Z_SIZE>
 template<typename E>
-void Device<T,X_SIZE,Y_SIZE,Z_SIZE>::printRandomObject(const E &obj)
+void Device<T,X_SIZE,Y_SIZE,Z_SIZE>::printRandomObject(const E & obj)
 {
   server_.printRandomObject(obj);
 }

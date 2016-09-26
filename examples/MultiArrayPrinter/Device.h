@@ -24,7 +24,7 @@ public:
   Device();
   static void print();
   template<typename E>
-  static void printRandomObject(const E &obj);
+  static void printRandomObject(const E & obj);
 private:
   static Server<T,
                 X_SIZE+RESERVED_X_COUNT,

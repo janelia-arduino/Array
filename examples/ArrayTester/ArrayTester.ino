@@ -23,7 +23,7 @@ Array<int,ELEMENT_COUNT> generateArray()
   return array;
 }
 
-Array<int,ELEMENT_COUNT> doubleElements(Array<int,ELEMENT_COUNT> &array)
+Array<int,ELEMENT_COUNT> doubleElements(Array<int,ELEMENT_COUNT> & array)
 {
   Array<int,ELEMENT_COUNT> array_doubled;
   for (int i=0; i<ELEMENT_COUNT; i++)
@@ -109,7 +109,7 @@ void setup()
   Serial << array_copy3.max_size() << endl;
 
   // get pointer to raw data
-  size_t *array_copy3_ptr = array_copy3.data();
+  size_t * array_copy3_ptr = array_copy3.data();
   size_t index = 2;
   if (index < array_copy3.size())
   {

@@ -12,7 +12,7 @@ template <typename T,
           unsigned int X_SIZE,
           unsigned int Y_SIZE,
           unsigned int Z_SIZE>
-Server<T,X_SIZE,Y_SIZE,Z_SIZE>::Server(HardwareSerial &serial)
+Server<T,X_SIZE,Y_SIZE,Z_SIZE>::Server(HardwareSerial & serial)
 {
   setSerial(serial);
 }
@@ -21,7 +21,7 @@ template <typename T,
           unsigned int X_SIZE,
           unsigned int Y_SIZE,
           unsigned int Z_SIZE>
-void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::setSerial(HardwareSerial &serial)
+void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::setSerial(HardwareSerial & serial)
 {
   serial_ptr_ = &serial;
 }
@@ -47,7 +47,7 @@ template <typename T,
           unsigned int Y_SIZE,
           unsigned int Z_SIZE>
 template <typename E>
-void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::printRandomObject(const E &obj)
+void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::printRandomObject(const E & obj)
 {
   *serial_ptr_ << obj << endl;
 }

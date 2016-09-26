@@ -20,13 +20,13 @@ template <typename T,
 class Server
 {
 public:
-  Server(HardwareSerial &serial=Serial);
-  void setSerial(HardwareSerial &serial);
+  Server(HardwareSerial & serial=Serial);
+  void setSerial(HardwareSerial & serial);
   void print();
   template<typename E>
-  void printRandomObject(const E &obj);
+  void printRandomObject(const E & obj);
 private:
-  HardwareSerial *serial_ptr_;
+  HardwareSerial * serial_ptr_;
   Array<T, X_SIZE+constants::RESERVED_X_COUNT> x_;
   Array<T, Y_SIZE+constants::RESERVED_Y_COUNT> y_;
   Array<T, Z_SIZE+constants::RESERVED_Z_COUNT> z_;
