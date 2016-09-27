@@ -18,7 +18,7 @@ statically allocated c style array. Care must be taken not to
 dereference an empty array or access elements beyond bounds.
 
 This library is very similar to
-[Vector](https://github.com/janelia-arduino/Array), however Vector
+[Vector](https://github.com/janelia-arduino/Vector), however Vector
 stores data externally, outside the container, and this library stores
 data internally. The pointer to the external memory causes the Vector
 container to use more memory than this container, but storing the data
