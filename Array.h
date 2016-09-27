@@ -62,7 +62,7 @@ template <typename T, size_t MAX_SIZE>
 inline Print & operator <<(Print & stream, const Array<T,MAX_SIZE> & array)
 {
   stream.print("[");
-  for (int i=0; i<array.size(); i++)
+  for (size_t i=0; i<array.size(); ++i)
   {
     if (i != 0)
     {

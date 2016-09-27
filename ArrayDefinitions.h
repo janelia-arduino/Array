@@ -98,7 +98,7 @@ void Array<T, MAX_SIZE>::assign(const size_t n, const U & value)
 {
   size_t assign_size = ((n < MAX_SIZE) ? n : MAX_SIZE);
   size_ = assign_size;
-  for (size_t i=0; i<assign_size; i++)
+  for (size_t i=0; i<assign_size; ++i)
   {
     values_[i] = value;
   }
@@ -111,7 +111,7 @@ void Array<T, MAX_SIZE>::assign(const size_t n, const U (&values)[N])
   size_t n_smallest = ((n < N) ? n : N);
   size_t assign_size = ((n_smallest < MAX_SIZE) ? n_smallest : MAX_SIZE);
   size_ = assign_size;
-  for (size_t i=0; i<assign_size; i++)
+  for (size_t i=0; i<assign_size; ++i)
   {
     values_[i] = values[i];
   }
@@ -124,7 +124,7 @@ void Array<T, MAX_SIZE>::assign(const size_t n, const Array<U,N> & values)
   size_t n_smallest = ((n < values.size()) ? n : values.size());
   size_t assign_size = ((n_smallest < MAX_SIZE) ? n_smallest : MAX_SIZE);
   size_ = assign_size;
-  for (size_t i=0; i<assign_size; i++)
+  for (size_t i=0; i<assign_size; ++i)
   {
     values_[i] = values[i];
   }
