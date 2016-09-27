@@ -149,25 +149,25 @@ void Array<T, MAX_SIZE>::pop_back()
 }
 
 template <typename T, size_t MAX_SIZE>
-size_t Array<T, MAX_SIZE>::size()
+size_t Array<T, MAX_SIZE>::size() const
 {
   return size_;
 }
 
 template <typename T, size_t MAX_SIZE>
-size_t Array<T, MAX_SIZE>::max_size()
+size_t Array<T, MAX_SIZE>::max_size() const
 {
   return MAX_SIZE;
 }
 
 template <typename T, size_t MAX_SIZE>
-bool Array<T, MAX_SIZE>::empty()
+bool Array<T, MAX_SIZE>::empty() const
 {
   return size_ == 0;
 }
 
 template <typename T, size_t MAX_SIZE>
-bool Array<T, MAX_SIZE>::full()
+bool Array<T, MAX_SIZE>::full() const
 {
   return size_ == MAX_SIZE;
 }

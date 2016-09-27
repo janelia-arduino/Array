@@ -47,10 +47,10 @@ public:
   void assign(const size_t n, const Array<U,N> & values);
   void push_back(const T & value);
   void pop_back();
-  size_t size();
-  size_t max_size();
-  bool empty();
-  bool full();
+  size_t size() const;
+  size_t max_size() const;
+  bool empty() const;
+  bool full() const;
   T * data();
 
 private:
@@ -59,7 +59,7 @@ private:
 };
 
 template <typename T, size_t MAX_SIZE>
-inline Print & operator <<(Print & stream, const Array<T,MAX_SIZE> & array)
+inline Print & operator <<(Print & stream, Array<T,MAX_SIZE> & array)
 {
   stream.print("[");
   for (size_t i=0; i<array.size(); ++i)
