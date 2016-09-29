@@ -46,3 +46,6 @@ vector.push_back(77);
 
 [Usage Examples](./examples)
 
+##Install Library Dependencies
+
+[arduino-libraries](https://github.com/janelia-arduino/arduino-libraries)
