@@ -42,15 +42,15 @@ Array<T, MAX_SIZE>::Array(const Array<U,N> & values)
 }
 
 template <typename T, size_t MAX_SIZE>
-T & Array<T, MAX_SIZE>::operator[](const size_t i)
+T & Array<T, MAX_SIZE>::operator[](const size_t index)
 {
-  return values_[i];
+  return values_[index];
 }
 
 template <typename T, size_t MAX_SIZE>
-T & Array<T, MAX_SIZE>::at(const size_t i)
+T & Array<T, MAX_SIZE>::at(const size_t index)
 {
-  return values_[i];
+  return values_[index];
 }
 
 template <typename T, size_t MAX_SIZE>

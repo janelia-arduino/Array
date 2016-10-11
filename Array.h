@@ -28,8 +28,8 @@ public:
   Array(const U (&values)[N]);
   template <typename U, size_t N>
   Array(const Array<U,N> & values);
-  T & operator[](const size_t i);
-  T & at(const size_t i);
+  T & operator[](const size_t index);
+  T & at(const size_t index);
   T & front();
   T & back();
   void clear();
