@@ -35,7 +35,7 @@ Array<T, MAX_SIZE>::Array(const U (&values)[N])
 
 template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
-Array<T, MAX_SIZE>::Array(const Array<U,N> & values)
+Array<T, MAX_SIZE>::Array(Array<U,N> & values)
 {
   size_ = 0;
   fill(values);
@@ -87,7 +87,7 @@ void Array<T, MAX_SIZE>::fill(const U (&values)[N])
 
 template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
-void Array<T, MAX_SIZE>::fill(const Array<U,N> & values)
+void Array<T, MAX_SIZE>::fill(Array<U,N> & values)
 {
   assign(values.size(),values);
 }
@@ -119,7 +119,7 @@ void Array<T, MAX_SIZE>::assign(const size_t n, const U (&values)[N])
 
 template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
-void Array<T, MAX_SIZE>::assign(const size_t n, const Array<U,N> & values)
+void Array<T, MAX_SIZE>::assign(const size_t n, Array<U,N> & values)
 {
   size_t n_smallest = ((n < values.size()) ? n : values.size());
   size_t assign_size = ((n_smallest < MAX_SIZE) ? n_smallest : MAX_SIZE);
