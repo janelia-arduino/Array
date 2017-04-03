@@ -1,4 +1,4 @@
-#Array
+# Array
 
 Authors:
 
@@ -27,7 +27,7 @@ template parameter.
 
 ## Array vs Vector
 
-###Array
+### Array
 
 ```c++
 const int ELEMENT_COUNT = 5;
@@ -35,7 +35,7 @@ Array<int,ELEMENT_COUNT> array;
 array.push_back(77);
 ```
 
-###Vector
+### Vector
 
 ```c++
 const int ELEMENT_COUNT = 5;
@@ -46,6 +46,6 @@ vector.push_back(77);
 
 [Usage Examples](./examples)
 
-##Install Library Dependencies
+## Install Library Dependencies
 
 [arduino-libraries](https://github.com/janelia-arduino/arduino-libraries)
