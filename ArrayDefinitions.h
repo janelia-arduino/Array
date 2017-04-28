@@ -149,6 +149,19 @@ void Array<T, MAX_SIZE>::pop_back()
 }
 
 template <typename T, size_t MAX_SIZE>
+void Array<T, MAX_SIZE>::remove(const size_t index)
+{
+  if (size_ > index)
+  {
+    for (size_t i=index; i<(size_-1); ++i)
+    {
+      values_[i] = values_[i+1];
+    }
+    --size_;
+  }
+}
+
+template <typename T, size_t MAX_SIZE>
 size_t Array<T, MAX_SIZE>::size() const
 {
   return size_;
