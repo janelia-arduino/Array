@@ -1,6 +1,7 @@
-#include "Arduino.h"
-#include "Streaming.h"
-#include "Array.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <Array.h>
+
 #include "Constants.h"
 #include "MultiArray.h"
 #include "TemplatedMultiArray.h"

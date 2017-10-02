@@ -12,7 +12,7 @@ enum {RESERVED_X_COUNT=3};
 enum {RESERVED_Y_COUNT=0};
 enum {RESERVED_Z_COUNT=1};
 
-extern const unsigned int baudrate;
+extern const long baudrate;
 
 extern const int x_default[X_SIZE];
 extern const int y_default[Y_SIZE];

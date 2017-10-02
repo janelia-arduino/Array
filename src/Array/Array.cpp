@@ -5,6 +5,4 @@
 // Authors:
 // Peter Polidoro polidorop@janelia.hhmi.org
 // ----------------------------------------------------------------------------
-#include "Array.h"
-
-
+#include "../Array.h"

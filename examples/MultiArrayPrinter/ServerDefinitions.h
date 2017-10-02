@@ -8,6 +8,7 @@
 #ifndef SERVER_DEFINITIONS_H
 #define SERVER_DEFINITIONS_H
 
+
 template <typename T,
           unsigned int X_SIZE,
           unsigned int Y_SIZE,

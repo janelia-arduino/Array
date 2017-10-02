@@ -7,10 +7,12 @@
 // ----------------------------------------------------------------------------
 #ifndef MULTI_ARRAY_H
 #define MULTI_ARRAY_H
-#include "Arduino.h"
-#include "Streaming.h"
-#include "Array.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <Array.h>
+
 #include "Constants.h"
+
 
 class MultiArray
 {

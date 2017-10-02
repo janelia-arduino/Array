@@ -12,6 +12,7 @@
 #include <cstring>
 #endif
 
+
 template <typename T, size_t MAX_SIZE>
 Array<T, MAX_SIZE>::Array()
 {

@@ -1,9 +1,9 @@
-#include "Arduino.h"
-#include "Streaming.h"
-#include "Array.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <Array.h>
 
 
-const unsigned int BAUDRATE = 9600;
+const long BAUDRATE = 115200;
 const unsigned int MAX_SIZE = 10;
 
 Array<int, MAX_SIZE> array;

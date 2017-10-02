@@ -7,9 +7,9 @@
 // ----------------------------------------------------------------------------
 #ifndef TEMPLATED_MULTI_ARRAY_H
 #define TEMPLATED_MULTI_ARRAY_H
-#include "Arduino.h"
-#include "Streaming.h"
-#include "Array.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <Array.h>
 
 
 template <typename T,

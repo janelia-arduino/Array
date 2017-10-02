@@ -7,9 +7,10 @@
 // ----------------------------------------------------------------------------
 #ifndef SERVER_H
 #define SERVER_H
-#include "Arduino.h"
-#include "Streaming.h"
-#include "Array.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <Array.h>
+
 #include "Constants.h"
 
 

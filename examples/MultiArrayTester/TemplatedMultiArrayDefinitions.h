@@ -8,6 +8,7 @@
 #ifndef TEMPLATED_MULTI_ARRAY_DEFINITIONS_H
 #define TEMPLATED_MULTI_ARRAY_DEFINITIONS_H
 
+
 template <typename T,
           unsigned int X_SIZE,
           unsigned int Y_SIZE,

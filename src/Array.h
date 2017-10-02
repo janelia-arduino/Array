@@ -9,14 +9,11 @@
 #define ARRAY_H
 
 #ifdef ARDUINO
-    #if ARDUINO >= 100
-        #include <Arduino.h>
-    #else
-        #include <WProgram.h>
-    #endif
+#include <Arduino.h>
 #else
-    #include <cstddef>
+#include <cstddef>
 #endif
+
 
 template <typename T, size_t MAX_SIZE>
 class Array
@@ -75,6 +72,6 @@ inline Print & operator <<(Print & stream, Array<T,MAX_SIZE> & array)
   return stream;
 }
 
-#include "ArrayDefinitions.h"
+#include "Array/ArrayDefinitions.h"
 
 #endif
