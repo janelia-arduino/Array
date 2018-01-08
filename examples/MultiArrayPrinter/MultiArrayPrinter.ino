@@ -13,7 +13,7 @@ void setup()
          constants::Y_SIZE,
          constants::Z_SIZE> device;
 
-  Serial.begin(constants::baudrate);
+  Serial.begin(constants::baud);
   delay(1000);
 
   Serial << "device:" << endl;

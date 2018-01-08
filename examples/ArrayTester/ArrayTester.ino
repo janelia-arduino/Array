@@ -3,7 +3,7 @@
 #include <Array.h>
 
 
-const long BAUDRATE = 115200;
+const long BAUD = 115200;
 
 const int ELEMENT_COUNT = 5;
 
@@ -35,7 +35,7 @@ Array<int,ELEMENT_COUNT> doubleElements(Array<int,ELEMENT_COUNT> & array)
 
 void setup()
 {
-  Serial.begin(BAUDRATE);
+  Serial.begin(BAUD);
   delay(1000);
 
 }

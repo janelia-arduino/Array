@@ -3,14 +3,14 @@
 #include <Array.h>
 
 
-const long BAUDRATE = 115200;
+const long BAUD = 115200;
 const unsigned int MAX_SIZE = 10;
 
 Array<int, MAX_SIZE> array;
 
 void setup()
 {
-  Serial.begin(BAUDRATE);
+  Serial.begin(BAUD);
   delay(1000);
 
   Serial << array << endl;

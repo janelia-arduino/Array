@@ -15,7 +15,7 @@ TemplatedMultiArray<int,
 
 void setup()
 {
-  Serial.begin(constants::baudrate);
+  Serial.begin(constants::baud);
   delay(1000);
 
   Serial << "multi_array:" << endl;
