@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro polidorop@janelia.hhmi.org
+// Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
 #ifndef TEMPLATED_MULTI_ARRAY_H
 #define TEMPLATED_MULTI_ARRAY_H
