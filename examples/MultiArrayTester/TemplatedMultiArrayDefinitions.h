@@ -48,7 +48,7 @@ template <unsigned int ARRAY_SIZE>
 void TemplatedMultiArray<T,X_SIZE,Y_SIZE,Z_SIZE>::printArray(Array<T,ARRAY_SIZE> array)
 {
   Serial << "[";
-  for (int i=0; i<ARRAY_SIZE; i++)
+  for (unsigned int i=0; i<ARRAY_SIZE; i++)
   {
     if (i != 0)
     {

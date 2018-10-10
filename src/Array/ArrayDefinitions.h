@@ -36,20 +36,32 @@ Array<T, MAX_SIZE>::Array(const U (&values)[N])
 
 template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
-Array<T, MAX_SIZE>::Array(Array<U,N> & values)
+Array<T, MAX_SIZE>::Array(const Array<U,N> & values)
 {
   size_ = 0;
   fill(values);
 }
 
 template <typename T, size_t MAX_SIZE>
-T & Array<T, MAX_SIZE>::operator[](const size_t index)
+const T & Array<T, MAX_SIZE>::operator[](size_t index) const
 {
   return values_[index];
 }
 
 template <typename T, size_t MAX_SIZE>
-T & Array<T, MAX_SIZE>::at(const size_t index)
+T & Array<T, MAX_SIZE>::operator[](size_t index)
+{
+  return values_[index];
+}
+
+template <typename T, size_t MAX_SIZE>
+const T & Array<T, MAX_SIZE>::at(size_t index) const
+{
+  return values_[index];
+}
+
+template <typename T, size_t MAX_SIZE>
+T & Array<T, MAX_SIZE>::at(size_t index)
 {
   return values_[index];
 }
@@ -88,14 +100,14 @@ void Array<T, MAX_SIZE>::fill(const U (&values)[N])
 
 template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
-void Array<T, MAX_SIZE>::fill(Array<U,N> & values)
+void Array<T, MAX_SIZE>::fill(const Array<U,N> & values)
 {
   assign(values.size(),values);
 }
 
 template <typename T, size_t MAX_SIZE>
 template <typename U>
-void Array<T, MAX_SIZE>::assign(const size_t n, const U & value)
+void Array<T, MAX_SIZE>::assign(size_t n, const U & value)
 {
   size_t assign_size = ((n < MAX_SIZE) ? n : MAX_SIZE);
   size_ = assign_size;
@@ -107,7 +119,7 @@ void Array<T, MAX_SIZE>::assign(const size_t n, const U & value)
 
 template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
-void Array<T, MAX_SIZE>::assign(const size_t n, const U (&values)[N])
+void Array<T, MAX_SIZE>::assign(size_t n, const U (&values)[N])
 {
   size_t n_smallest = ((n < N) ? n : N);
   size_t assign_size = ((n_smallest < MAX_SIZE) ? n_smallest : MAX_SIZE);
@@ -120,7 +132,7 @@ void Array<T, MAX_SIZE>::assign(const size_t n, const U (&values)[N])
 
 template <typename T, size_t MAX_SIZE>
 template <typename U, size_t N>
-void Array<T, MAX_SIZE>::assign(const size_t n, Array<U,N> & values)
+void Array<T, MAX_SIZE>::assign(size_t n, const Array<U,N> & values)
 {
   size_t n_smallest = ((n < values.size()) ? n : values.size());
   size_t assign_size = ((n_smallest < MAX_SIZE) ? n_smallest : MAX_SIZE);
@@ -150,7 +162,7 @@ void Array<T, MAX_SIZE>::pop_back()
 }
 
 template <typename T, size_t MAX_SIZE>
-void Array<T, MAX_SIZE>::remove(const size_t index)
+void Array<T, MAX_SIZE>::remove(size_t index)
 {
   if (size_ > index)
   {
@@ -184,6 +196,12 @@ template <typename T, size_t MAX_SIZE>
 bool Array<T, MAX_SIZE>::full() const
 {
   return size_ == MAX_SIZE;
+}
+
+template <typename T, size_t MAX_SIZE>
+const T * Array<T, MAX_SIZE>::data() const
+{
+  return values_;
 }
 
 template <typename T, size_t MAX_SIZE>
