@@ -6,7 +6,7 @@
 const long BAUD = 115200;
 const unsigned int MAX_SIZE = 10;
 
-Array<int, MAX_SIZE> array;
+Array<int,MAX_SIZE> array;
 
 void setup()
 {
