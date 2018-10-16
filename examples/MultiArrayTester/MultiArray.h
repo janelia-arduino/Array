@@ -20,9 +20,9 @@ public:
   MultiArray();
   void print();
 private:
-  Array<int, constants::X_SIZE> x_;
-  Array<int, constants::Y_SIZE> y_;
-  Array<int, constants::Z_SIZE> z_;
+  Array<int,constants::X_SIZE> x_;
+  Array<int,constants::Y_SIZE> y_;
+  Array<int,constants::Z_SIZE> z_;
 };
 
 #endif

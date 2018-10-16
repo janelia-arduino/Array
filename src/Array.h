@@ -15,15 +15,18 @@
 #endif
 
 
-template <typename T, size_t MAX_SIZE>
+template <typename T,
+  size_t MAX_SIZE>
 class Array
 {
 public:
   Array();
   Array(const T & value);
-  template <typename U, size_t N>
+  template <typename U,
+    size_t N>
   Array(const U (&values)[N]);
-  template <typename U, size_t N>
+  template <typename U,
+    size_t N>
   Array(const Array<U,N> & values);
   const T & operator[](size_t index) const;
   T & operator[](size_t index);
@@ -34,16 +37,23 @@ public:
   void clear();
   template <typename U>
   void fill(const U & value);
-  template <typename U, size_t N>
+  template <typename U,
+    size_t N>
   void fill(const U (&values)[N]);
-  template <typename U, size_t N>
+  template <typename U,
+    size_t N>
   void fill(const Array<U,N> & values);
   template <typename U>
-  void assign(size_t n, const U & value);
-  template <typename U, size_t N>
-  void assign(size_t n, const U (&values)[N]);
-  template <typename U, size_t N>
-  void assign(size_t n, const Array<U,N> & values);
+  void assign(size_t n,
+    const U & value);
+  template <typename U,
+    size_t N>
+  void assign(size_t n,
+    const U (&values)[N]);
+  template <typename U,
+    size_t N>
+  void assign(size_t n,
+    const Array<U,N> & values);
   void push_back(const T & value);
   void pop_back();
   void remove(size_t index);
@@ -59,8 +69,10 @@ private:
   size_t size_;
 };
 
-template <typename T, size_t MAX_SIZE>
-inline Print & operator <<(Print & stream, const Array<T,MAX_SIZE> & array)
+template <typename T,
+  size_t MAX_SIZE>
+inline Print & operator <<(Print & stream,
+  const Array<T,MAX_SIZE> & array)
 {
   stream.print("[");
   for (size_t i=0; i<array.size(); ++i)

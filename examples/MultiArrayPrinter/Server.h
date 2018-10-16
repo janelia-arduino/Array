@@ -28,9 +28,9 @@ public:
   void printRandomObject(const E & obj);
 private:
   HardwareSerial * serial_ptr_;
-  Array<T, X_SIZE+constants::RESERVED_X_COUNT> x_;
-  Array<T, Y_SIZE+constants::RESERVED_Y_COUNT> y_;
-  Array<T, Z_SIZE+constants::RESERVED_Z_COUNT> z_;
+  Array<T,X_SIZE+constants::RESERVED_X_COUNT> x_;
+  Array<T,Y_SIZE+constants::RESERVED_Y_COUNT> y_;
+  Array<T,Z_SIZE+constants::RESERVED_Z_COUNT> z_;
   template <unsigned int ARRAY_SIZE>
   void printArray(Array<T,ARRAY_SIZE> array);
 };
