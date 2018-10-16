@@ -10,27 +10,27 @@
 
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 Server<T,X_SIZE,Y_SIZE,Z_SIZE>::Server(HardwareSerial & serial)
 {
   setSerial(serial);
 }
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::setSerial(HardwareSerial & serial)
 {
   serial_ptr_ = &serial;
 }
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::print()
 {
   *serial_ptr_ << "x:" << endl;
@@ -44,9 +44,9 @@ void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::print()
 }
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 template <typename E>
 void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::printRandomObject(const E & obj)
 {
@@ -54,9 +54,9 @@ void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::printRandomObject(const E & obj)
 }
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 template <unsigned int ARRAY_SIZE>
 void Server<T,X_SIZE,Y_SIZE,Z_SIZE>::printArray(Array<T,ARRAY_SIZE> array)
 {

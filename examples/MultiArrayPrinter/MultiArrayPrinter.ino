@@ -9,9 +9,9 @@
 void setup()
 {
   Device<int,
-         constants::X_SIZE,
-         constants::Y_SIZE,
-         constants::Z_SIZE> device;
+    constants::X_SIZE,
+    constants::Y_SIZE,
+    constants::Z_SIZE> device;
 
   Serial.begin(constants::baud);
   delay(1000);

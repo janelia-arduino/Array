@@ -15,9 +15,9 @@
 
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 class Server
 {
 public:

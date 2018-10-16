@@ -9,9 +9,9 @@
 
 MultiArray multi_array;
 TemplatedMultiArray<int,
-                    constants::X_SIZE,
-                    constants::Y_SIZE,
-                    constants::Z_SIZE> templated_multi_array;
+  constants::X_SIZE,
+  constants::Y_SIZE,
+  constants::Z_SIZE> templated_multi_array;
 
 void setup()
 {

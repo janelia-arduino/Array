@@ -10,9 +10,9 @@
 
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 TemplatedMultiArray<T,X_SIZE,Y_SIZE,Z_SIZE>::TemplatedMultiArray()
 {
   x_.fill(constants::x_default);
@@ -22,9 +22,9 @@ TemplatedMultiArray<T,X_SIZE,Y_SIZE,Z_SIZE>::TemplatedMultiArray()
 }
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 void TemplatedMultiArray<T,X_SIZE,Y_SIZE,Z_SIZE>::print()
 {
   Serial << "x:" << endl;
@@ -41,9 +41,9 @@ void TemplatedMultiArray<T,X_SIZE,Y_SIZE,Z_SIZE>::print()
 }
 
 template <typename T,
-          unsigned int X_SIZE,
-          unsigned int Y_SIZE,
-          unsigned int Z_SIZE>
+  unsigned int X_SIZE,
+  unsigned int Y_SIZE,
+  unsigned int Z_SIZE>
 template <unsigned int ARRAY_SIZE>
 void TemplatedMultiArray<T,X_SIZE,Y_SIZE,Z_SIZE>::printArray(Array<T,ARRAY_SIZE> array)
 {
