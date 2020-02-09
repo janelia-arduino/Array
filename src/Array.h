@@ -14,7 +14,6 @@
 #include <cstddef>
 #endif
 
-
 template <typename T,
   size_t MAX_SIZE>
 class Array
@@ -61,8 +60,12 @@ public:
   size_t max_size() const;
   bool empty() const;
   bool full() const;
+  size_t free() const;
   const T * data() const;
   T * data();
+
+  T * begin();
+  T * end();
 
 private:
   T values_[MAX_SIZE];
@@ -87,6 +90,6 @@ inline Print & operator <<(Print & stream,
   return stream;
 }
 
-#include "Array/ArrayDefinitions.h"
+#include "Array.hpp"
 
 #endif

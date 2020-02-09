@@ -233,6 +233,13 @@ bool Array<T,MAX_SIZE>::full() const
 
 template <typename T,
   size_t MAX_SIZE>
+size_t Array<T,MAX_SIZE>::free() const
+{
+  return (MAX_SIZE - size_);
+}
+
+template <typename T,
+  size_t MAX_SIZE>
 const T * Array<T,MAX_SIZE>::data() const
 {
   return values_;
@@ -243,6 +250,20 @@ template <typename T,
 T * Array<T,MAX_SIZE>::data()
 {
   return values_;
+}
+
+template <typename T,
+  size_t MAX_SIZE>
+T * Array<T,MAX_SIZE>::begin()
+{
+  return &values_[0];
+}
+
+template <typename T,
+  size_t MAX_SIZE>
+T * Array<T,MAX_SIZE>::end()
+{
+  return &values_[size_-1];
 }
 
 #endif
