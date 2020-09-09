@@ -245,4 +245,18 @@ T * Array<T,MAX_SIZE>::data()
   return values_;
 }
 
+template <typename T,
+  size_t MAX_SIZE>
+Array<T,MAX_SIZE>::iterator Array<T,MAX_SIZE>::begin()
+{
+  return &values_[0];
+}
+
+template <typename T,
+  size_t MAX_SIZE>
+Array<T,MAX_SIZE>::iterator Array<T,MAX_SIZE>::end()
+{
+  return &values_[size_];
+}
+
 #endif

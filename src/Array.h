@@ -63,7 +63,9 @@ public:
   bool full() const;
   const T * data() const;
   T * data();
-
+  typedef Array<T,MAX_SIZE> * iterator;
+  iterator begin();
+  iterator end();
 private:
   T values_[MAX_SIZE];
   size_t size_;
