@@ -247,16 +247,30 @@ T * Array<T,MAX_SIZE>::data()
 
 template <typename T,
   size_t MAX_SIZE>
-Array<T,MAX_SIZE>::iterator Array<T,MAX_SIZE>::begin()
+typename Array<T,MAX_SIZE>::iterator Array<T,MAX_SIZE>::begin()
 {
-  return &values_[0];
+  return iterator(values_);
 }
 
 template <typename T,
   size_t MAX_SIZE>
-Array<T,MAX_SIZE>::iterator Array<T,MAX_SIZE>::end()
+typename Array<T,MAX_SIZE>::iterator Array<T,MAX_SIZE>::end()
 {
-  return &values_[size_];
+  return iterator(values_,size_);
+}
+
+template <typename T,
+  size_t MAX_SIZE>
+typename Array<T,MAX_SIZE>::const_iterator Array<T,MAX_SIZE>::begin() const
+{
+  return const_iterator(values_);
+}
+
+template <typename T,
+  size_t MAX_SIZE>
+typename Array<T,MAX_SIZE>::const_iterator Array<T,MAX_SIZE>::end() const
+{
+  return const_iterator(values_,size_);
 }
 
 #endif

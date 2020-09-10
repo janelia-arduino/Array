@@ -18,6 +18,15 @@ void stuffFullArray(Elements & array)
   }
 }
 
+void stuffPartialArray(Elements & array)
+{
+  array.clear();
+  for (int i=0; i<ELEMENT_COUNT-2; i++)
+  {
+    array.push_back((i+1)*8);
+  }
+}
+
 void doubleElements(Elements & array)
 {
   for (int i=0; i<ELEMENT_COUNT; i++)
@@ -97,6 +106,19 @@ void loop()
 
   Serial << "Print array_full_stuffed elements using iterators: ";
   for (int element : array_full_stuffed)
+  {
+    Serial << element << " ";
+  }
+  Serial << endl;
+
+  Elements array_partial_stuffed;
+  stuffPartialArray(array_partial_stuffed);
+  Serial << "array_partial_stuffed:" << endl;
+  Serial << array_partial_stuffed << endl;
+  delay(DELAY);
+
+  Serial << "Print array_partial_stuffed elements using iterators: ";
+  for (size_t element : array_partial_stuffed)
   {
     Serial << element << " ";
   }

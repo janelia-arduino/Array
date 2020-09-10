@@ -13,6 +13,7 @@
 #else
 #include <cstddef>
 #endif
+#include "Array/ArrayIterator.h"
 
 
 template <typename T,
@@ -63,9 +64,12 @@ public:
   bool full() const;
   const T * data() const;
   T * data();
-  typedef Array<T,MAX_SIZE> * iterator;
+  typedef ArrayIterator<T> iterator;
   iterator begin();
   iterator end();
+  typedef ArrayIterator<const T> const_iterator;
+  const_iterator begin() const;
+  const_iterator end() const;
 private:
   T values_[MAX_SIZE];
   size_t size_;

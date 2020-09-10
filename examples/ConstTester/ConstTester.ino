@@ -47,6 +47,13 @@ void loop()
   delay(DELAY);
   Serial << endl;
   delay(DELAY);
+  Serial << "Print const_array elements using iterators: ";
+  for (const int element : const_array)
+  {
+    Serial << element << " ";
+  }
+  Serial << endl;
+  delay(DELAY);
 
   const Elements const_array_copy(const_array);
   Serial << "const_array_copy:" << const_array_copy << endl;

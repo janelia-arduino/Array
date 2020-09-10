@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: Array
-  - Version :: 1.1.2
+  - Version :: 1.2.0
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/Array
   - Author :: Peter Polidoro
