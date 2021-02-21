@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: Array
-  - Version :: 1.2.0
+  - Version :: 1.2.1
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/Array
   - Author :: Peter Polidoro
@@ -32,15 +32,15 @@
 ** Array
 
    #+BEGIN_SRC C++
-     const int ELEMENT_COUNT = 5;
-     Array<int,ELEMENT_COUNT> array;
+     const int ELEMENT_COUNT_MAX = 5;
+     Array<int,ELEMENT_COUNT_MAX> array;
      array.push_back(77);
    #+END_SRC
 
 ** Vector
 
    #+BEGIN_SRC C++
-     const int ELEMENT_COUNT = 5;
+     const int ELEMENT_COUNT_MAX = 5;
      int storage_array[ELEMENT_COUNT_MAX];
      Vector<int> vector(storage_array);
      vector.push_back(77);

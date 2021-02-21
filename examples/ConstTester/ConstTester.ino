@@ -5,8 +5,8 @@
 
 const long BAUD = 115200;
 
-const size_t ELEMENT_COUNT = 5;
-typedef Array<size_t,ELEMENT_COUNT> Elements;
+const size_t ELEMENT_COUNT_MAX = 5;
+typedef Array<size_t,ELEMENT_COUNT_MAX> Elements;
 
 const size_t INDEX = 2;
 const size_t DELAY = 500;
@@ -15,15 +15,15 @@ void setup()
 {
   Serial.begin(BAUD);
   while (!Serial)
-  {
-  // wait for serial port to connect.
-  }
+    {
+      // wait for serial port to connect.
+    }
 }
 
 
 void loop()
 {
-  const size_t c_style_array[ELEMENT_COUNT] = {15,14,13,12,11};
+  const size_t c_style_array[ELEMENT_COUNT_MAX] = {15,14,13,12,11};
 
   Elements array(c_style_array);
   array[2] = 28;
@@ -49,9 +49,9 @@ void loop()
   delay(DELAY);
   Serial << "Print const_array elements using iterators: ";
   for (const int element : const_array)
-  {
-    Serial << element << " ";
-  }
+    {
+      Serial << element << " ";
+    }
   Serial << endl;
   delay(DELAY);
 
