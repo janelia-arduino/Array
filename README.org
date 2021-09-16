@@ -1,6 +1,6 @@
 #+TITLE: Array
 #+AUTHOR: Peter Polidoro
-#+EMAIL: peterpolidoro@gmail.com
+#+EMAIL: peter@polidoro.io
 
 * Library Information
   - Name :: Array
@@ -8,7 +8,7 @@
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/Array
   - Author :: Peter Polidoro
-  - Email :: peterpolidoro@gmail.com
+  - Email :: peter@polidoro.io
 
   An array container similar to the C++
   [[http://www.cplusplus.com/reference/array/array/][std::array]], with
