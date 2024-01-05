@@ -66,14 +66,32 @@ template <typename T,
   size_t MAX_SIZE>
 const T & Array<T,MAX_SIZE>::at(size_t index) const
 {
-  return values_[index];
+  auto arraySize = sizeof(values_)/sizeof(values_[0]);
+
+  if(index < 0 || index >= arraySize)
+  {
+    Serial.println(" Array Index out of Range! Last valid Index will be returned.");
+
+    auto outOfRangeIndex = arraySize-1;
+    return values_[outOfRangeIndex]; 
+  }else 
+    return values_[index];
+
 }
 
 template <typename T,
   size_t MAX_SIZE>
 T & Array<T,MAX_SIZE>::at(size_t index)
 {
-  return values_[index];
+  auto arraySize = sizeof(values_)/sizeof(values_[0]);
+  if(index < 0 || index >= arraySize)
+  {
+    Serial.println(" Array Index out of Range! Last valid Index will be returned.");
+    
+    auto outOfRangeIndex = arraySize-1;
+    return values_[outOfRangeIndex]; 
+  }else 
+    return values_[index];
 }
 
 template <typename T,
