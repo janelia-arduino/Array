@@ -38,38 +38,46 @@ Array<T, MAX_SIZE>::Array(const Array<U, N> &values) {
 
 template <typename T, size_t MAX_SIZE>
 const T &Array<T, MAX_SIZE>::operator[](size_t index) const {
+  ARRAY_ACCESS_CHECK(index < size_);
   return values_[index];
 }
 
 template <typename T, size_t MAX_SIZE>
 T &Array<T, MAX_SIZE>::operator[](size_t index) {
+  ARRAY_ACCESS_CHECK(index < size_);
   return values_[index];
 }
 
 template <typename T, size_t MAX_SIZE>
 const T &Array<T, MAX_SIZE>::at(size_t index) const {
+  ARRAY_ACCESS_CHECK(index < size_);
   return values_[index];
 }
 
 template <typename T, size_t MAX_SIZE> T &Array<T, MAX_SIZE>::at(size_t index) {
+  ARRAY_ACCESS_CHECK(index < size_);
   return values_[index];
 }
 
 template <typename T, size_t MAX_SIZE>
 const T &Array<T, MAX_SIZE>::front() const {
+  ARRAY_ACCESS_CHECK(size_ > 0);
   return values_[0];
 }
 
 template <typename T, size_t MAX_SIZE> T &Array<T, MAX_SIZE>::front() {
+  ARRAY_ACCESS_CHECK(size_ > 0);
   return values_[0];
 }
 
 template <typename T, size_t MAX_SIZE>
 const T &Array<T, MAX_SIZE>::back() const {
+  ARRAY_ACCESS_CHECK(size_ > 0);
   return values_[size_ - 1];
 }
 
 template <typename T, size_t MAX_SIZE> T &Array<T, MAX_SIZE>::back() {
+  ARRAY_ACCESS_CHECK(size_ > 0);
   return values_[size_ - 1];
 }
 

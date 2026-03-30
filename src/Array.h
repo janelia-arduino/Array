@@ -10,9 +10,20 @@
 
 #ifdef ARDUINO
 #include <Arduino.h>
+#include <assert.h>
 #else
+#include <cassert>
 #include <cstddef>
 #endif
+
+#ifndef ARRAY_ACCESS_CHECK
+#ifdef ARRAY_ENABLE_BOUNDS_CHECKS
+#define ARRAY_ACCESS_CHECK(condition) assert(condition)
+#else
+#define ARRAY_ACCESS_CHECK(condition) ((void)0)
+#endif
+#endif
+
 #include "Array/ArrayIterator.h"
 
 template <typename T, size_t MAX_SIZE> class Array {

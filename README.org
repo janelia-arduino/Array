@@ -5,7 +5,7 @@
 
 * Library Information
 - Name :: Array
-- Version :: 1.3.0
+- Version :: 1.4.0
 - License :: BSD
 - URL :: https://github.com/janelia-arduino/Array
 - Author :: Peter Polidoro
@@ -21,6 +21,9 @@ The container owns a fixed-capacity statically allocated C array internally,
 so no dynamic allocation is required. The maximum capacity is part of the
 type, while the current size still changes as values are pushed, popped, or
 assigned.
+
+The library is explicitly header-only. Include =Array.h= and no separate
+compilation unit is required.
 
 This library pairs naturally with
 [[https://github.com/janelia-arduino/Vector][Vector]]. =Array= stores its
@@ -79,6 +82,9 @@ Representative APIs:
 - =remove(index)= only changes the container when =index < size()=.
 - =operator[]()=, =at()=, =front()=, and =back()= do not perform bounds
   checking.
+- Define =ARRAY_ENABLE_BOUNDS_CHECKS= before including =Array.h= to enable
+  assertion-backed access checks in those methods, or override
+  =ARRAY_ACCESS_CHECK(condition)= with a custom hook.
 - Capacity is fixed by the template argument and cannot be changed at runtime.
 
 * Array vs Vector
@@ -118,6 +124,7 @@ pixi install
 pixi run pio-version
 pixi run format-check
 pixi run test
+pixi run build examples/ArrayTester uno
 pixi run build examples/ArrayTester pico
 pixi run build examples/ConstTester pico
 pixi run release-check
@@ -125,18 +132,21 @@ pixi run release-check
 
 Pixi keeps the =pio= CLI and its Python runtime local to the repository. The
 =build=, =upload=, =flash=, and =rebuild= tasks select examples without
-editing =platformio.ini=.
+editing =platformio.ini=. The default release-check uses a representative
+matrix of native tests plus =uno= and =pico= builds.
 
 Useful commands:
 
 #+BEGIN_SRC sh
 pixi run ports
 pixi run format-all
-pixi run build examples/ArrayTester pico
-pixi run upload examples/ArrayTester pico /dev/ttyACM0
+pixi run build examples/ArrayTester <env>
+pixi run upload examples/ArrayTester <env> /dev/ttyACM0
 pixi run monitor /dev/ttyACM0 115200
-pixi run set-version -- 1.2.1
+pixi run set-version -- 1.4.0
 #+END_SRC
+
+Sample environments: =uno=, =mega=, =pico=, =teensy40=.
 
 Equivalent direct commands without Pixi:
 
@@ -144,9 +154,10 @@ Equivalent direct commands without Pixi:
 make native-test
 python3 tools/clang_format_all.py --check
 python3 tools/version_sync.py check
+python3 tools/pio_task.py build --example examples/ArrayTester --env uno
 python3 tools/pio_task.py build --example examples/ArrayTester --env pico
 python3 tools/pio_task.py build --example examples/ConstTester --env pico
-python3 tools/pio_task.py upload --example examples/ArrayTester --env pico --port /dev/ttyACM0
+python3 tools/pio_task.py upload --example examples/ArrayTester --env <env> --port /dev/ttyACM0
 #+END_SRC
 
 * Release Checklist

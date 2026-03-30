@@ -6,6 +6,8 @@ clean:
 native-test:
 	g++ -std=c++17 -Wall -Wextra -pedantic -Isrc test/native/test_array.cpp -o /tmp/array_native_test
 	/tmp/array_native_test
+	g++ -std=c++17 -Wall -Wextra -pedantic -Isrc test/native/test_array_bounds.cpp -o /tmp/array_bounds_native_test
+	/tmp/array_bounds_native_test
 
 .PHONY: teensy-firmware
 teensy-firmware: clean

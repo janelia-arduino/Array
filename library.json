@@ -1,7 +1,7 @@
 {
   "name": "Array",
-  "version": "1.3.0",
-  "description": "Fixed-capacity array-like container with vector-style size management.",
+  "version": "1.4.0",
+  "description": "Header-only fixed-capacity array-like container with vector-style size management.",
   "repository": {
     "type": "git",
     "url": "https://github.com/janelia-arduino/Array.git"

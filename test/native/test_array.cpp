@@ -50,6 +50,24 @@ void test_fill_assign_and_remove() {
   assert(array.empty());
 }
 
+void test_cross_type_assignment_and_truncation() {
+  Array<int, 3> array;
+
+  const long source_values[] = {10L, 20L, 30L, 40L};
+  array.assign(4, source_values);
+  assert(array.size() == 3);
+  assert(array[0] == 10);
+  assert(array[1] == 20);
+  assert(array[2] == 30);
+
+  Array<long, 5> source(source_values);
+  array.assign(5, source);
+  assert(array.size() == 3);
+  assert(array[0] == 10);
+  assert(array[1] == 20);
+  assert(array[2] == 30);
+}
+
 void test_copy_constructor_and_iteration() {
   const int values[] = {4, 5, 6};
   Array<int, 4> source(values);
@@ -65,6 +83,23 @@ void test_copy_constructor_and_iteration() {
   assert(copy.data()[2] == 6);
 }
 
+void test_cross_type_copy_constructor_and_fill_truncate() {
+  const long values[] = {1L, 2L, 3L, 4L};
+  Array<long, 4> source(values);
+  Array<int, 2> copy(source);
+
+  assert(copy.size() == 2);
+  assert(copy[0] == 1);
+  assert(copy[1] == 2);
+
+  Array<int, 3> filled;
+  filled.fill(source);
+  assert(filled.size() == 3);
+  assert(filled[0] == 1);
+  assert(filled[1] == 2);
+  assert(filled[2] == 3);
+}
+
 void test_const_accessors_and_iterator_identity() {
   const int values_a[] = {1, 2, 3};
   const int values_b[] = {1, 2, 3};
@@ -76,13 +111,15 @@ void test_const_accessors_and_iterator_identity() {
   assert(array.begin() != other.begin());
 }
 
-}  // namespace
+} // namespace
 
 int main() {
   test_default_array_state();
   test_push_pop_and_capacity_limits();
   test_fill_assign_and_remove();
+  test_cross_type_assignment_and_truncation();
   test_copy_constructor_and_iteration();
+  test_cross_type_copy_constructor_and_fill_truncate();
   test_const_accessors_and_iterator_identity();
   return 0;
 }
