@@ -1,47 +1,161 @@
+#+OPTIONS: toc:1 |:t ^:nil tags:nil
 #+TITLE: Array
 #+AUTHOR: Peter Polidoro
 #+EMAIL: peter@polidoro.io
 
 * Library Information
-  - Name :: Array
-  - Version :: 1.2.1
-  - License :: BSD
-  - URL :: https://github.com/janelia-arduino/Array
-  - Author :: Peter Polidoro
-  - Email :: peter@polidoro.io
+- Name :: Array
+- Version :: 1.3.0
+- License :: BSD
+- URL :: https://github.com/janelia-arduino/Array
+- Author :: Peter Polidoro
+- Email :: peter@polidoro.io
 
-  An array container similar to the C++
-  [[http://www.cplusplus.com/reference/array/array/][std::array]], with
-  some [[http://www.cplusplus.com/reference/vector/vector/][std::vector]]
-  methods added. The maximum size is fixed as a template parameter, but
-  the size is variable, like a vector. Values can be pushed and popped
-  and the size adjusts accordingly. The data are stored internally as a
-  statically allocated c style array. Care must be taken not to
-  dereference an empty array or access elements beyond bounds.
+** Description
 
-  This library is very similar to
-  [[https://github.com/janelia-arduino/Vector][Vector]], however Vector
-  stores data externally, outside the container, and this library stores
-  data internally. The pointer to the external memory causes the Vector
-  container to use more memory than this container, but storing the data
-  internally makes it necessary to use the maximum size as a class
-  template parameter.
+Arduino container library similar to
+[[http://www.cplusplus.com/reference/array/array/][std::array]], with a
+variable logical size and several vector-style helper methods.
+
+The container owns a fixed-capacity statically allocated C array internally,
+so no dynamic allocation is required. The maximum capacity is part of the
+type, while the current size still changes as values are pushed, popped, or
+assigned.
+
+This library pairs naturally with
+[[https://github.com/janelia-arduino/Vector][Vector]]. =Array= stores its
+elements internally and encodes the maximum size in the type. =Vector= stores
+its elements in external storage and leaves the capacity outside the type.
+
+* Quick Start
+
+** Basic setup
+
+#+BEGIN_SRC cpp
+#include <Array.h>
+
+constexpr size_t ELEMENT_COUNT_MAX = 5;
+Array<int, ELEMENT_COUNT_MAX> array;
+
+void setup() {
+  array.push_back(21);
+  array.push_back(42);
+  array.push_back(84);
+}
+#+END_SRC
+
+You can also initialize from a single value or an existing array:
+
+#+BEGIN_SRC cpp
+Array<int, 4> filled_array(7);
+
+const int values[] = {1, 2, 3};
+Array<int, 4> copied_array(values);
+#+END_SRC
+
+** Common operations
+
+Representative APIs:
+
+- =push_back(value)=
+- =pop_back()=
+- =remove(index)=
+- =clear()=
+- =fill(value)=
+- =assign(n, value)=
+- =size()=
+- =max_size()=
+- =empty()=
+- =full()=
+- =front()=
+- =back()=
+- =data()=
+- =begin()= and =end()=
+
+** Storage and bounds notes
+
+- =push_back()= is ignored when the array is already full.
+- =pop_back()= is ignored when the array is empty.
+- =remove(index)= only changes the container when =index < size()=.
+- =operator[]()=, =at()=, =front()=, and =back()= do not perform bounds
+  checking.
+- Capacity is fixed by the template argument and cannot be changed at runtime.
 
 * Array vs Vector
 
 ** Array
 
-   #+BEGIN_SRC C++
-     const int ELEMENT_COUNT_MAX = 5;
-     Array<int,ELEMENT_COUNT_MAX> array;
-     array.push_back(77);
-   #+END_SRC
+#+BEGIN_SRC cpp
+constexpr size_t ELEMENT_COUNT_MAX = 5;
+Array<int, ELEMENT_COUNT_MAX> array;
+array.push_back(77);
+#+END_SRC
 
 ** Vector
 
-   #+BEGIN_SRC C++
-     const int ELEMENT_COUNT_MAX = 5;
-     int storage_array[ELEMENT_COUNT_MAX];
-     Vector<int> vector(storage_array);
-     vector.push_back(77);
-   #+END_SRC
+#+BEGIN_SRC cpp
+constexpr size_t ELEMENT_COUNT_MAX = 5;
+int storage[ELEMENT_COUNT_MAX];
+Vector<int> vector(storage);
+vector.push_back(77);
+#+END_SRC
+
+Choose =Array= when the container should own its fixed-capacity storage
+directly. Choose =Vector= when the storage already exists elsewhere or when you
+want the capacity decided outside the type.
+
+* Build and Examples
+
+Representative examples:
+
+- [[./examples/ArrayTester/ArrayTester.ino][examples/ArrayTester/ArrayTester.ino]]
+- [[./examples/ConstTester/ConstTester.ino][examples/ConstTester/ConstTester.ino]]
+
+Preferred local workflow with Pixi:
+
+#+BEGIN_SRC sh
+pixi install
+pixi run pio-version
+pixi run format-check
+pixi run test
+pixi run build examples/ArrayTester pico
+pixi run build examples/ConstTester pico
+pixi run release-check
+#+END_SRC
+
+Pixi keeps the =pio= CLI and its Python runtime local to the repository. The
+=build=, =upload=, =flash=, and =rebuild= tasks select examples without
+editing =platformio.ini=.
+
+Useful commands:
+
+#+BEGIN_SRC sh
+pixi run ports
+pixi run format-all
+pixi run build examples/ArrayTester pico
+pixi run upload examples/ArrayTester pico /dev/ttyACM0
+pixi run monitor /dev/ttyACM0 115200
+pixi run set-version -- 1.2.1
+#+END_SRC
+
+Equivalent direct commands without Pixi:
+
+#+BEGIN_SRC sh
+make native-test
+python3 tools/clang_format_all.py --check
+python3 tools/version_sync.py check
+python3 tools/pio_task.py build --example examples/ArrayTester --env pico
+python3 tools/pio_task.py build --example examples/ConstTester --env pico
+python3 tools/pio_task.py upload --example examples/ArrayTester --env pico --port /dev/ttyACM0
+#+END_SRC
+
+* Release Checklist
+
+Before tagging a release:
+
+- Update =CHANGELOG.md=.
+- Sync version metadata with =python3 tools/version_sync.py set X.Y.Z=.
+- Run =pixi run format-check=.
+- Run =make native-test=.
+- Run =pixi run release-check=.
+- Commit, tag, and push the release.

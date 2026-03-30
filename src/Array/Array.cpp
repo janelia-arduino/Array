@@ -5,4 +5,4 @@
 // Authors:
 // Peter Polidoro peter@polidoro.io
 // ----------------------------------------------------------------------------
-#include "../Array.h"
+#include <Array.h>
